@@ -7,8 +7,22 @@
     <title>My Budget Tracker</title>
 </head>
 <body>
-<h1> My personal Buget Tracker</h1>
+<h1> My personal Bduget Tracker</h1>
 <p> Track your income, expense, and saving</p>
-    
+
+    <h2>Add an expense</h2>
+    <form>
+
+        <lable for="expense-name"> Expense Name</lable>
+            <input type="text" id="expense-name" placeholder="Example:Groceries">
+            <lable for="expense-amount">Amount:</lable>
+            <input type="number" id="expense-amount" placeholder="Enter amount">
+            <button type="submit">Add Expense</button>
+        
+    </form>
+    <h2>My Expense</h2>
+    <ul id="expense-list"></ul>
+    <h3>Total Expense: $<span id="total">0.00</span></h3>
+    <script src="index.js"></script>
 </body>
 </html>

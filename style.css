@@ -3,9 +3,10 @@ body {
     background-color: #f0f4f8;
     color: #222222;
     text-align: center;
+    margin: 0;
     padding: 50px 20px;
 }
 h1{ 
-    color: #2563eb;
+    color: #245c24;
     font-size: 36px;
 }
