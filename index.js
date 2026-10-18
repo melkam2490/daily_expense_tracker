@@ -14,6 +14,11 @@ form.addEventListener("submit", function(event) {
 
     /* Stop the page from refreshing */
     event.preventDefault();
+    // Check if the user entered a name and amount
+if (expenseName.value === "" || expenseAmount.value === "") {
+    alert("Please enter an expense name and amount.");
+    return;
+}
 
     /* 5. Create a new list item for the expense */
     const li = document.createElement("li");

@@ -1,28 +1,49 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css"
+    <link rel="stylesheet" href="style.css">
     <title>My Budget Tracker</title>
 </head>
 <body>
-<h1> My personal Bduget Tracker</h1>
-<p> Track your income, expense, and saving</p>
+    <h1>My Personal Budget Tracker</h1>
+    <p>Track your income, expenses, and savings.</p>
 
-    <h2>Add an expense</h2>
-    <form>
+    <h2>Add an Expense</h2>
 
-        <lable for="expense-name"> Expense Name</lable>
-            <input type="text" id="expense-name" placeholder="Example:Groceries">
-            <lable for="expense-amount">Amount:</lable>
-            <input type="number" id="expense-amount" placeholder="Enter amount">
-            <button type="submit">Add Expense</button>
-        
+    <form id="expense-form">
+        <label for="expense-name">Expense Name:</label>
+        <input type="text" id="expense-name"
+               placeholder="Example: Groceries" required>
+
+        <label for="expense-amount">Amount ($):</label>
+        <input type="number" id="expense-amount"
+               placeholder="Enter amount"
+               min="0.01" step="0.01" required>
+
+        <label for="expense-category">Category:</label>
+        <select id="expense-category" required>
+            <option value="">Choose a category</option>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="Bills">Bills</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label for="expense-date">Date:</label>
+        <input type="date" id="expense-date" required>
+
+        <button type="submit">Add Expense</button>
     </form>
-    <h2>My Expense</h2>
+
+    <h2>My Expenses</h2>
     <ul id="expense-list"></ul>
-    <h3>Total Expense: $<span id="total">0.00</span></h3>
+
+    <h3>Total Expenses: $<span id="total">0.00</span></h3>
+
     <script src="index.js"></script>
 </body>
 </html>

@@ -24,6 +24,16 @@ ALLOWED_HOSTS = [
     if host.strip()
 ]
 
+# Trusted origins for secure form submissions
+CSRF_TRUSTED_ORIGINS = [
+    origin.strip()
+    for origin in os.environ.get(
+        "DJANGO_CSRF_TRUSTED_ORIGINS",
+        "",
+    ).split(",")
+    if origin.strip()
+]
+
 # Applications
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -66,8 +76,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-# Database: use Render's DATABASE_URL online,
-# or your local PostgreSQL database on your computer.
+# Database: use Render's database online
+# or local PostgreSQL on your computer
 if os.environ.get("DATABASE_URL"):
     DATABASES = {
         "default": dj_database_url.config(
@@ -99,6 +109,9 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+    },
+    {
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
@@ -116,4 +129,5 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 # Email
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
+# Login
 LOGIN_REDIRECT_URL = "/"
