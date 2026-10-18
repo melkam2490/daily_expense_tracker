@@ -1,0 +1,120 @@
+
+/* Main page design */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    color: #222222;
+    text-align: center;
+    margin: 0;
+    padding: 40px 20px;
+}
+
+/* Main heading */
+h1 {
+    color: #245c24;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+/* Section headings */
+h2 {
+    color: #245c24;
+    margin-top: 30px;
+}
+
+/* Form layout */
+form {
+    background-color: white;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Input boxes and category menu */
+input,
+select {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    margin: 8px 0 18px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+/* Labels */
+label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+}
+
+/* Add Expense button */
+button , .delete-button{
+    background-color: #245c24;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #174317;
+}
+
+/* Expense list */
+#expense-list {
+    list-style: none;
+    padding: 0;
+    max-width: 450px;
+    margin: 20px auto;
+}
+
+/* Each expense */
+#expense-list li {
+    background-color: white;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Total expenses */
+h3 {
+    color: #245c24;
+    font-size: 24px;
+}
+.delete-button {
+    background-color: #b42318;
+}
+
+.delete-button:hover {
+    background-color: #8f1d14;
+}
+/* Make the website responsive on phones */
+@media (max-width: 600px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    form {
+        width: 100%;
+        max-width: 400px;
+        box-sizing: border-box;
+        padding: 15px;
+    }
+
+    #expense-list li {
+        overflow-wrap: anywhere;
+    }
+}

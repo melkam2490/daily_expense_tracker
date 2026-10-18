@@ -1,0 +1,91 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Set the character format and page size -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Connect the CSS file -->
+    <link rel="stylesheet" href="{% static 'expenses/style.css' %}">
+
+    <!-- Browser tab title -->
+    <title>My Budget Tracker</title>
+</head>
+<body>
+    <!-- Main heading -->
+    <h1>My Personal Budget Tracker</h1>
+    <p>Track your income, expenses, and savings.</p>
+
+    <!-- Form for adding a new expense -->
+    <h2>Add an Expense</h2>
+
+    <form id="expense-form" method="post" action="{% url 'add_expense' %}">
+        <!-- Protect the form from unwanted submissions -->
+        {% csrf_token %}
+
+        <!-- Enter the expense name -->
+        <label for="expense-name">Expense Name:</label>
+        <input type="text" id="expense-name" name="title"
+               placeholder="Example: Groceries" required>
+
+        <!-- Enter the expense amount -->
+        <label for="expense-amount">Amount ($):</label>
+        <input type="number" id="expense-amount" name="amount"
+               placeholder="Enter amount"
+               min="0.01" step="0.01" required>
+
+        <!-- Choose an expense category -->
+        <label for="expense-category">Category:</label>
+        <select id="expense-category" name="category" required>
+            <option value="">Choose a category</option>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="Bills">Bills</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <!-- Choose the expense date -->
+        <label for="expense-date">Date:</label>
+        <input type="date" id="expense-date" name="date" required>
+
+        <!-- Submit the form -->
+        <button type="submit">Add Expense</button>
+    </form>
+
+    <!-- Display expenses saved in the database -->
+    <h2>My Expenses</h2>
+
+    <ul id="expense-list">
+        <!-- Display each expense -->
+        {% for expense in expenses %}
+    <li>
+        {{ expense.title }} - ${{ expense.amount }}
+        ({{ expense.category }} - {{ expense.date }})
+
+        <!-- Form to delete this expense -->
+        <form method="post"
+              action="{% url 'delete_expense' expense.id %}">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+            <a href="{% url 'edit_expense' expense.id %}">Edit</a>
+        </form>
+    </li>
+{% empty %}
+    <li>No expenses yet.</li>
+{% endfor %}
+    </ul>
+
+    <!-- Display the total expenses -->
+<h2>This Month's Summary</h2>
+
+<h3>Monthly Expenses: ${{ monthly_total|floatformat:2 }}</h3>
+
+<p>Number of expenses this month: {{ monthly_count }}</p>
+
+    <!-- Connect the JavaScript file -->
+ 
+</body>
+</html>
